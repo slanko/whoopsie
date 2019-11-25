@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class dippe : MonoBehaviour
 {
-    Animator anim;
+    public Animator anim;
     Rigidbody rb;
     public KeyCode up, down, left, right, attack, dodge, jump;
     public float moveSpeed, jumpForce;
@@ -13,7 +13,6 @@ public class dippe : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
     }
 
@@ -48,6 +47,14 @@ public class dippe : MonoBehaviour
                 {
                     rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
                 }
+            }
+            if (Input.GetMouseButton(0))
+            {
+                anim.SetBool("aim", true);
+            }
+            else
+            {
+                anim.SetBool("aim", false);
             }
         }
     }
